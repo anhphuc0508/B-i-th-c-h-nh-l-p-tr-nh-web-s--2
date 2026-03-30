@@ -1,0 +1,80 @@
+<header class="fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-lg">
+        <div class="container">
+            <div class="nav-item">
+                <img src="./image/logo.png" height="80">
+            </div>
+            <form class="input-group shadow-sm flex-grow-1" style="max-width: 450px;">
+                <input type="text" class="form-control" placeholder="Tìm kiếm">
+                <button class="btn btn-primary" type="submit">
+                    <i class="bi bi-search"></i>
+                </button>
+            </form>
+
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link text-white fw-bold d-flex align-items-center gap-2 nav-login-btn" href="index.html"><i
+                                class="bi bi-house"></i> Trang Chủ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white fw-bold d-flex align-items-center gap-2 nav-login-btn"
+                            href="cart.html"><i class="bi bi-cart3"></i> Giỏ Hàng (<span id="cart-count">0</span>)</a>
+                    </li>
+                    <li class="nav-item">
+                        <a id="user-menu-btn" class="nav-link text-white fw-bold d-flex align-items-center gap-2 nav-login-btn"
+                            data-bs-toggle="modal" data-bs-target="#authModal">
+                            <i class="bi bi-person-circle"></i>
+                            <span id="user-name-display">Đăng Nhập</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-lg">
+        <div class="container">
+            <ul class="navbar-nav flex-row gap-4 align-items-center">
+                <li class="nav-item">
+                    <a class="nav-link text-white fw-bold d-flex align-items-center gap-2" href="laptop.html">
+                        <i class="bi bi-laptop"></i> Laptop
+                    </a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link text-white fw-bold dropdown-toggle d-flex align-items-center gap-2" href="#"
+                        data-bs-toggle="dropdown">
+                        <i class="bi bi-pc-display"></i> PC 
+                    </a>
+                    <ul class="dropdown-menu shadow border-0 mt-2">
+                        <li><a class="dropdown-item" href="#">PC Gaming</a></li>
+                        <li><a class="dropdown-item" href="#">PC Văn phòng</a></li>
+                
+                    </ul>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link text-white fw-bold d-flex align-items-center gap-2" href="phukien.html">
+                        <i class="bi bi-headphones"></i> Phụ Kiện
+                    </a>
+                </li>
+            </ul>
+            <ul class="navbar-nav flex-row  gap-3 align-items-end">
+                <li class="nav-item">
+                    <a href="#" class="nav-link text-white px-2"><i class="bi bi-facebook fs-5"></i></a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link text-white px-2"><i class="bi bi-youtube fs-5"></i></a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link text-white px-2"><i class="bi bi-instagram fs-5"></i></a>
+                </li>
+                <li class="nav-item border-start border-light border-opacity-25 ms-2 ps-3">
+                    <span class="nav-link text-white fw-bold">
+                        <i class="bi bi-telephone-fill me-1"></i> Hotline: 0941539882
+                    </span>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>

@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LapDesk - Thanh Toán</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+    <style>
+        body {
+            padding-top: 180px;
+            background-color: #F4F6F8;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* Tỉa lại phần tên và giá cho sang */
+        #detail-name {
+            font-size: 1.8rem;
+            color: #212529;
+            margin-bottom: 10px;
+        }
+
+        #detail-price {
+            color: #d70018;
+            /* Màu đỏ đặc trưng của các shop công nghệ */
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-right: 15px;
+            line-height: 1;
+        }
+
+        .old-price {
+            font-size: 1.2rem;
+            color: #707070;
+            text-decoration: line-through;
+            font-weight: 400;
+        }
+
+        .vat-text {
+            font-size: 0.85rem;
+            color: #6c757d;
+            margin-top: 5px;
+        }
+
+        .btn-add-to-cart {
+            background-color: #007bff;
+            border: none;
+            padding: 15px 40px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 12px;
+            transition: all 0.3s;
+        }
+
+        .btn-add-to-cart:hover {
+            background-color: #0056b3;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 123, 255, 0.3);
+        }
+
+        .policy-badge {
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            padding: 10px;
+            font-size: 0.9rem;
+            border: 1px solid #e9ecef;
+        }
+
+        .navbar {
+            border-bottom: none;
+            gap: 15px;
+        }
+
+        .nav-login-btn:hover {
+            background-color: #ffffff;
+            color: #1E90FF !important;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transform: translateY(-2px);
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="header-container"></div>
+    <main class="container mt-5 mb-5" style="min-height: 50vh;">
+        <nav aria-label="breadcrumb" class="mb-4">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index.html" class="text-decoration-none">Trang chủ</a></li>
+                <li class="breadcrumb-item"><a href="cart.html" class="text-decoration-none">Giỏ hàng</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Thanh toán</li>
+            </ol>
+        </nav>
+
+        <h2 class="mb-4 fw-bold text-primary border-bottom pb-2">Thông tin thanh toán</h2>
+
+        <div class="row g-5">
+            <div class="col-md-7 col-lg-8">
+                <h4 class="mb-3">Địa chỉ giao hàng</h4>
+                <form id="form-thanh-toan" class="needs-validation" novalidate>
+                    <div class="row g-3">
+                        <div class="col-sm-12">
+                            <label for="hoTen" class="form-label">Họ và tên <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="hoTen" placeholder="Nhập họ và tên người nhận" required>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <label for="soDienThoai" class="form-label">Số điện thoại <span class="text-danger">*</span></label>
+                            <input type="tel" class="form-control" id="soDienThoai" placeholder="Nhập số điện thoại" required>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <label for="email" class="form-label">Email (Tùy chọn)</label>
+                            <input type="email" class="form-control" id="email" placeholder="you@example.com">
+                        </div>
+
+                        <div class="col-12">
+                            <label for="diaChi" class="form-label">Địa chỉ chi tiết <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="diaChi" placeholder="Số nhà, tên đường, phường/xã, quận/huyện, tỉnh/thành phố" required>
+                        </div>
+
+                        <div class="col-12">
+                            <label for="ghiChu" class="form-label">Ghi chú thêm</label>
+                            <textarea class="form-control" id="ghiChu" rows="3" placeholder="Ghi chú về thời gian giao hàng..."></textarea>
+                        </div>
+                    </div>
+
+                    <hr class="my-4">
+
+                    <h4 class="mb-3">Phương thức thanh toán</h4>
+                    <div class="my-3">
+                        <div class="form-check">
+                            <input id="cod" name="phuongThuc" type="radio" class="form-check-input" checked required>
+                            <label class="form-check-label fw-bold" for="cod">Thanh toán khi nhận hàng (COD)</label>
+                        </div>
+                        <div class="form-check mt-2">
+                            <input id="banking" name="phuongThuc" type="radio" class="form-check-input" required>
+                            <label class="form-check-label fw-bold" for="banking">Chuyển khoản ngân hàng</label>
+                        </div>
+
+                        <div id="khu-vuc-qr" class="mt-3 p-3 border rounded bg-white text-center d-none shadow-sm">
+                            <p class="mb-2 fw-bold text-primary">Quét mã QR để thanh toán</p>
+                            
+                            <img src="./image/img.jpg" alt="Mã QR Thanh Toán" class="img-fluid border p-1" style="max-width: 300px; border-radius: 8px;">
+                            
+                            <p class="mt-2 small text-muted mb-0">Nội dung CK: <span class="fw-bold text-dark">Tên + SĐT của bạn</span></p>
+                        </div>
+                        </div>
+
+                    <hr class="my-4">
+                    <button class="btn btn-primary btn-lg w-100 fw-bold shadow-sm" type="submit">XÁC NHẬN ĐẶT HÀNG</button>
+                </form>
+            </div>
+
+            <div class="col-md-5 col-lg-4">
+                <div class="card shadow-sm border-0 bg-light rounded-4">
+                    <div class="card-body p-4">
+                        <h4 class="d-flex justify-content-between align-items-center mb-4">
+                            <span class="text-primary fw-bold">Đơn hàng của bạn</span>
+                            <span class="badge bg-primary rounded-pill" id="checkout-cart-count">0</span>
+                        </h4>
+                        
+                        <ul class="list-group mb-3" id="danh-sach-checkout">
+                            </ul>
+
+                        <div class="d-flex justify-content-between mb-2">
+                            <span>Tạm tính:</span>
+                            <span id="checkout-tam-tinh">0 đ</span>
+                        </div>
+                        <div class="d-flex justify-content-between mb-3 border-bottom pb-3">
+                            <span>Phí vận chuyển:</span>
+                            <span class="text-success fw-bold">Miễn phí</span>
+                        </div>
+                        <div class="d-flex justify-content-between text-danger fw-bold fs-5">
+                            <span>Tổng cộng:</span>
+                            <span id="checkout-tong-tien">0 đ</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // 1. Các hàm hỗ trợ tính tiền (dùng chung logic với cart.html)
+        function convertPriceToNumber(priceStr) {
+            return Number(priceStr.replace(/[^0-9]/g, ''));
+        }
+
+        function formatNumberToPrice(number) {
+            return number.toLocaleString('vi-VN') + ' đ';
+        }
+
+        // 2. Hàm lấy dữ liệu giỏ hàng và in ra phần "Tóm tắt đơn hàng"
+        function loadThongTinDonHang() {
+            let gioHang = JSON.parse(localStorage.getItem('gioHang')) || [];
+            const danhSachCheckout = document.getElementById('danh-sach-checkout');
+            
+            // Nếu giỏ hàng trống thì đá về trang chủ
+            if (gioHang.length === 0) {
+                alert("Giỏ hàng của bạn đang trống. Vui lòng chọn sản phẩm trước khi thanh toán!");
+                window.location.href = "index.html";
+                return;
+            }
+
+            let htmlContent = "";
+            let tongTien = 0;
+            let tongSoLuong = 0;
+
+            gioHang.forEach(sp => {
+                let giaSo = convertPriceToNumber(sp.price);
+                let thanhTien = giaSo * sp.soLuong;
+                tongTien += thanhTien;
+                tongSoLuong += sp.soLuong;
+
+                htmlContent += `
+                    <li class="list-group-item d-flex justify-content-between lh-sm p-3">
+                        <div class="d-flex">
+                            <img src="${sp.img}" width="50" height="50" class="object-fit-cover rounded me-3 border">
+                            <div>
+                                <h6 class="my-0 text-truncate" style="max-width: 150px;" title="${sp.name}">${sp.name}</h6>
+                                <small class="text-muted">SL: ${sp.soLuong}</small>
+                            </div>
+                        </div>
+                        <span class="text-muted fw-bold">${formatNumberToPrice(thanhTien)}</span>
+                    </li>
+                `;
+            });
+
+            danhSachCheckout.innerHTML = htmlContent;
+            document.getElementById('checkout-tam-tinh').innerText = formatNumberToPrice(tongTien);
+            document.getElementById('checkout-tong-tien').innerText = formatNumberToPrice(tongTien);
+            document.getElementById('checkout-cart-count').innerText = tongSoLuong;
+            
+            // Cập nhật luôn icon giỏ hàng trên thanh menu
+            document.getElementById('cart-count').innerText = tongSoLuong;
+        }
+
+        // 3. Xử lý sự kiện khi bấm nút XÁC NHẬN ĐẶT HÀNG
+        document.getElementById('form-thanh-toan').addEventListener('submit', function(event) {
+            event.preventDefault(); // Chặn việc form tự động load lại trang
+
+            // Lấy thông tin khách điền
+            const hoTen = document.getElementById('hoTen').value.trim();
+            const soDienThoai = document.getElementById('soDienThoai').value.trim();
+            const diaChi = document.getElementById('diaChi').value.trim();
+
+            // Validate cơ bản: Kiểm tra xem đã nhập đủ ô bắt buộc chưa
+            if (!hoTen || !soDienThoai || !diaChi) {
+                alert("Vui lòng điền đầy đủ Họ tên, Số điện thoại và Địa chỉ giao hàng!");
+                return;
+            }
+
+            // Nếu nhập đủ thì báo thành công
+            alert(`Cảm ơn ${hoTen}!\nĐơn hàng của bạn đã được đặt thành công.\nChúng tôi sẽ liên hệ vào số ${soDienThoai} để xác nhận trong thời gian sớm nhất.`);
+            
+            // Xóa sạch giỏ hàng trong trình duyệt
+            localStorage.removeItem('gioHang');
+            
+            // Đẩy khách về trang chủ
+            window.location.href = "index.html";
+        });
+        // 4. Xử lý sự kiện Ẩn/Hiện mã QR khi chọn phương thức thanh toán
+        const radioCOD = document.getElementById('cod');
+        const radioBanking = document.getElementById('banking');
+        const khuVucQR = document.getElementById('khu-vuc-qr');
+
+        // Bắt sự kiện khi click vào COD -> Thêm class d-none để ẩn QR
+        radioCOD.addEventListener('change', function() {
+            if (this.checked) {
+                khuVucQR.classList.add('d-none');
+            }
+        });
+
+        // Bắt sự kiện khi click vào Banking -> Xóa class d-none để hiện QR
+        radioBanking.addEventListener('change', function() {
+            if (this.checked) {
+                khuVucQR.classList.remove('d-none');
+            }
+        });
+        // Chạy hàm load dữ liệu ngay khi mở trang
+        loadThongTinDonHang();
+    </script>
+    <script src="HFshow.js"></script>
+    <div id="footer-container"></div>
+
+</body>
