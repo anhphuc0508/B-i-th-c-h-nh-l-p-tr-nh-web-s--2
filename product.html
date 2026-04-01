@@ -80,76 +80,111 @@
     <div id="header-container"></div>
 
     <main class="container mt-5 mb-5">
-        <div class="row bg-white p-4 rounded-4 shadow-sm border">
-            <div class="col-md-5 mb-4 mb-md-0">
-                <div class="border rounded-4 overflow-hidden shadow-sm">
-                    <img id="detail-img" src="" class="img-fluid w-100" alt="Ảnh sản phẩm">
-                </div>
-            </div>
-
-            <div class="col-md-7 ps-md-5">
-                <nav aria-label="breadcrumb" class="mb-2">
-                    <ol class="breadcrumb small">
-                        <li class="breadcrumb-item"><a href="index.html">Trang chủ</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Laptop</li>
-                    </ol>
-                </nav>
-
-                <h2 id="detail-name" class="fw-bold text-uppercase">Đang tải...</h2>
-
-                <div class="price-section my-4 py-3 border-top border-bottom">
-                    <div class="d-flex align-items-baseline">
-                        <span id="detail-price"></span>
-                        <del id="detail-old-price" class="old-price"></del>
-                    </div>
-                    <p class="vat-text"><i class="bi bi-check-circle-fill text-success"></i> Đã bao gồm thuế VAT</p>
-                </div>
-
-                <p id="detail-desc" class="text-secondary mb-4" style="line-height: 1.6;"></p>
-
-                <div class="d-flex align-items-center mb-4 gap-3">
-                    <span id ="soluong" class="fw-bold">Chọn số lượng:</span>
-                    <input type="number" class="form-control text-center shadow-sm" id="input-soluong" value="1" min="1"
-                        style="width: 80px; border-radius: 8px;">
-                </div>
-
-                <div class="d-grid gap-2 d-md-block">
-                    <button id="btn-them-chinh" class="btn btn-primary btn-lg btn-add-to-cart shadow">
-                        <i class="bi bi-cart-plus-fill me-2"></i>Thêm vào giỏ hàng
-                    </button>
-                </div>
-
-                <div class="row g-3 mt-4">
-                    <div class="col-6">
-                        <div class="policy-badge d-flex align-items-center gap-2">
-                            <i class="bi bi-truck fs-4 text-primary"></i>
-                            <span class="small">Giao hàng miễn phí toàn quốc</span>
+        <div class="row">
+            <div class="col-lg-9  mb-4">
+                <div class="row bg-white p-4 rounded-4 shadow-sm border">
+                    <div class="col-md-5 mb-4 mb-md-0">
+                        <div class="border rounded-4 overflow-hidden shadow-sm">
+                            <img id="detail-img" src="" class="img-fluid w-100" alt="Ảnh sản phẩm">
                         </div>
                     </div>
-                    <div class="col-6">
-                        <div class="policy-badge d-flex align-items-center gap-2">
-                            <i class="bi bi-shield-check fs-4 text-success"></i>
-                            <span class="small">Bảo hành chính hãng 12 tháng</span>
+
+                    <div class="col-md-7 ps-md-5">
+                        <nav aria-label="breadcrumb" class="mb-2">
+                            <ol class="breadcrumb small">
+                                <li class="breadcrumb-item"><a href="index.html">Trang chủ</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Laptop</li>
+                            </ol>
+                        </nav>
+
+                        <h2 id="detail-name" class="fw-bold text-uppercase">Đang tải...</h2>
+
+                        <div class="price-section my-4 py-3 border-top border-bottom">
+                            <div class="d-flex align-items-baseline">
+                                <span id="detail-price"></span>
+                                <del id="detail-old-price" class="old-price"></del>
+                            </div>
+                            <p class="vat-text"><i class="bi bi-check-circle-fill text-success"></i> Đã bao gồm thuế VAT
+                            </p>
+                        </div>
+
+                        <p id="detail-desc" class="text-secondary mb-4" style="line-height: 1.6;"></p>
+
+                        <div class="d-flex align-items-center mb-4 gap-3">
+                            <span id="soluong" class="fw-bold">Chọn số lượng:</span>
+                            <input type="number" class="form-control text-center shadow-sm" id="input-soluong" value="1"
+                                min="1" style="width: 80px; border-radius: 8px;">
+                        </div>
+
+                        <div class="d-grid gap-2 d-md-block">
+                            <button id="btn-them-chinh" class="btn btn-primary btn-lg btn-add-to-cart shadow">
+                                <i class="bi bi-cart-plus-fill me-2"></i>Thêm vào giỏ hàng
+                            </button>
+                        </div>
+
+                        <div class="row g-3 mt-4">
+                            <div class="col-6">
+                                <div class="policy-badge d-flex align-items-center gap-2">
+                                    <i class="bi bi-truck fs-4 text-primary"></i>
+                                    <span class="small">Giao hàng miễn phí toàn quốc</span>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="policy-badge d-flex align-items-center gap-2">
+                                    <i class="bi bi-shield-check fs-4 text-success"></i>
+                                    <span class="small">Bảo hành chính hãng 12 tháng</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
 
-        <div class="row bg-white p-4 rounded-4 shadow-sm mt-4 border">
-            <h4 class="fw-bold mb-4 border-bottom pb-2 text-primary">
-                <i class="bi bi-cpu me-2"></i>Thông số kỹ thuật chi tiết
-            </h4>
-            <div class="table-responsive">
-                <table class="table table-hover">
-                    <tbody id="detail-specs">
-                    </tbody>
-                </table>
+                <div class="row bg-white p-4 rounded-4 shadow-sm mt-4 border">
+                    <h4 class="fw-bold mb-4 border-bottom pb-2 text-primary">
+                        <i class="bi bi-cpu me-2"></i>Thông số kỹ thuật chi tiết
+                    </h4>
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <tbody id="detail-specs">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="mt-5 pt-4 border-top">
+                    <h3 class="fw-bold mb-4">Sản phẩm tương tự</h3>
+                    <div id="render-de-xuat" class="row g-4 mb-4"></div>
+                </div>
             </div>
-        </div>
-        <div class="mt-5 pt-4 border-top">
-            <h3 class="fw-bold mb-4">Sản phẩm tương tự</h3>
-            <div id="render-de-xuat" class="row g-4 mb-4"></div>
+            <div class="col-lg-3">
+                <div class="card shadow-sm border-0 rounded-4  bg-white">
+                    <div class="card-body p-4">
+                        <h6 class="fw-bold mb-3 text-center text-primary">CẦN TƯ VẤN THÊM?</h6>
+                        <p class="small text-center text-muted mb-3">Để lại số điện thoại, LapDesk sẽ gọi lại cho
+                            bạn ngay!</p>
+
+                        <form id="form-tu-van">
+                            <div class="mb-3">
+                                <input type="text" class="form-control form-control-sm shadow-none" id="tuvan-name"
+                                    placeholder="Nhập tên của bạn *" required>
+                            </div>
+
+                            <div class="mb-3">
+                                <input type="tel" class="form-control form-control-sm shadow-none" id="tuvan-phone"
+                                    placeholder="Nhập số điện thoại *" required>
+                            </div>
+
+                            <div class="mb-3">
+                                <textarea class="form-control form-control-sm shadow-none" id="tuvan-note" rows="2"
+                                    placeholder="Bạn cần hỏi thêm gì? (Không bắt buộc)"></textarea>
+                            </div>
+
+                            <button type="button" class="btn btn-danger w-100 fw-bold" onclick="guiTuVan()">
+                                <i class="bi bi-send me-1"></i> GỬI YÊU CẦU
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
     </main>
 
@@ -168,9 +203,9 @@
 
             let codeHtmlBang = "";
             const khungBang = document.getElementById('detail-specs');
-            document.getElementById('btn-them-chinh').onclick = function() {
+            document.getElementById('btn-them-chinh').onclick = function () {
                 const soLuongChon = document.getElementById('input-soluong').value;
-                
+
                 themSanPham(sanpham.id, soLuongChon);
             };
             if (sanpham.specs) {
