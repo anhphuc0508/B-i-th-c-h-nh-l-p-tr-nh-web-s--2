@@ -17,7 +17,7 @@ function hienThiTheoLoai(loaiSanPham, idKhuVuc) {
 
     let htmlContent = "";
 
-    const sanPhamLoc = tatCaSanPham.filter(item => item.type === loaiSanPham);
+    const sanPhamLoc = tatCaSanPham.filter(item => item.type === loaiSanPham).slice(0,8);
 
     sanPhamLoc.forEach((item) => {
         htmlContent += `
@@ -58,7 +58,7 @@ function hienThiSanPhamTheoPC(loaiPC, idKhuVuc) {
     if(!roChua) return;
 
     let htmlContent = "";
-    const sanPhamLoc = tatCaSanPham.filter(item => item.type == "pc" && item.loaipc == loaiPC);
+    const sanPhamLoc = tatCaSanPham.filter(item => item.type == "pc" && item.loaipc == loaiPC).slice(0,8);
     if(sanPhamLoc.length === 0) {
         roChua.innerHTML = `<p class="text-center py-5 text-muted">Đang cập nhật sản phẩm ${loaiPC.toUpperCase()}...</p>`;
     }
@@ -98,7 +98,7 @@ function hienThiSanPhamTheoHang(tenHang, idKhuVuc) {
 
     let htmlContent = "";
   
-    const sanPhamLoc = tatCaSanPham.filter(item => item.brand === tenHang && item.type === "laptop");
+    const sanPhamLoc = tatCaSanPham.filter(item => item.brand === tenHang && item.type === "laptop").slice(0,8);
 
     if (sanPhamLoc.length === 0) {
         roChua.innerHTML = `<p class="text-center py-5 text-muted">Đang cập nhật sản phẩm ${tenHang.toUpperCase()}...</p>`;

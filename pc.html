@@ -36,11 +36,11 @@
         <nav aria-label="breadcrumb" class="mb-4">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="index.html" class="text-decoration-none">Trang chủ</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Phụ Kiện</li>
+                <li class="breadcrumb-item active" aria-current="page">PC</li>
             </ol>
         </nav>
-        <h2 class="mb-4 fw-bold text-primary border-bottom pb-2">Danh Mục Phụ Kiện</h2>
-        <div id="render-phukien" class="row g-4 mb-5"></div>
+        <h2 class="mb-4 fw-bold text-primary border-bottom pb-2">Danh Mục PC</h2>
+        <div id="render-pc" class="row g-4 mb-5"></div>
         <nav aria-label="Page navigation">
             <ul id="thanh-phan-trang" class="pagination justify-content-center mt-4">
             </ul>
@@ -58,7 +58,7 @@
         const soSanPhamMoiTrang = 8; 
         
     
-        const danhSachLaptop = tatCaSanPham.filter(item => item.type === 'phukien');
+        const danhSachLaptop = tatCaSanPham.filter(item => item.type === 'pc');
 
        
         function hienThiLaptopCoPhanTrang(trang) {
@@ -69,7 +69,7 @@
             const laptopTrenTrang = danhSachLaptop.slice(viTriBatDau, viTriKetThuc);
 
             let htmlSanPham = "";
-            const roChua = document.getElementById('render-phukien');
+            const roChua = document.getElementById('render-pc');
             
             laptopTrenTrang.forEach((item) => {
                 htmlSanPham += `
@@ -108,9 +108,9 @@
                 </li>
             `;
 
-            // Tạo các nút số
+           
             for (let i = 1; i <= tongSoTrang; i++) {
-                // Nếu là trang hiện tại thì tô màu xanh (class 'active')
+       
                 htmlPhanTrang += `
                     <li class="page-item ${i === trangHienTai ? 'active' : ''}">
                         <a class="page-link" href="#" onclick="hienThiLaptopCoPhanTrang(${i}); return false;">${i}</a>
@@ -118,7 +118,7 @@
                 `;
             }
 
-            // Tạo nút "Trang sau"
+        
             htmlPhanTrang += `
                 <li class="page-item ${trangHienTai === tongSoTrang ? 'disabled' : ''}">
                     <a class="page-link" href="#" onclick="hienThiLaptopCoPhanTrang(${trangHienTai + 1}); return false;">Trang sau</a>
@@ -127,8 +127,7 @@
 
             thanhPhanTrang.innerHTML = htmlPhanTrang;
         }
-
         hienThiLaptopCoPhanTrang(1);
-    </script>
+        </script>
 </body>
 </html>
