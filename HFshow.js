@@ -105,6 +105,7 @@ function dangXuat() {
     alert("Đã đăng xuất thành công!");
     kiemTraTrangThaiDangNhap();
     localStorage.removeItem('gioHang');
+    capNhatSoLuongGioHang();
     location.reload()
 }
 loadLayout();
