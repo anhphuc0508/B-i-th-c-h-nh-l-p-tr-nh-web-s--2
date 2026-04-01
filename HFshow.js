@@ -104,7 +104,7 @@ function dangXuat() {
     localStorage.removeItem('userHienTai');    
     alert("Đã đăng xuất thành công!");
     kiemTraTrangThaiDangNhap();
-    // localStorage.removeItem('gioHang');
-    // capNhatSoLuongGioHang();
+    localStorage.removeItem('gioHang');
+    location.reload()
 }
 loadLayout();
