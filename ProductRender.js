@@ -4,7 +4,7 @@ let gioHang = JSON.parse(localStorage.getItem('gioHang')) || [];
 function capNhatSoLuongGioHang() {
     const soLuongHienThi = document.getElementById('cart-count');
     if (soLuongHienThi) {
-        let tongSoLuong = gioHang.length;
+        let tongSoLuong = gioHang.reduce((tong, sp) => tong + sp.soLuong, 0);
         soLuongHienThi.innerText = tongSoLuong;
     }
 }

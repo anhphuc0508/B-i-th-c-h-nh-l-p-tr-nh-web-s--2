@@ -103,13 +103,13 @@
                                     </tr>
                                 </thead>
                                 <tbody id="bang-gio-hang">
-                                    </tbody>
+                                </tbody>
                             </table>
                         </div>
                     </div>
                 </div>
             </div>
-            
+
             <div class="col-lg-4">
                 <div class="card shadow-sm border-0 bg-white">
                     <div class="card-body p-4">
@@ -187,28 +187,39 @@
             bangGioHang.innerHTML = htmlContent;
             document.getElementById('tam-tinh').innerText = formatNumberToPrice(tongTien);
             document.getElementById('tong-tien').innerText = formatNumberToPrice(tongTien);
-            
-            // Cập nhật số lượng trên menu header của trang cart.html
+
+
             let tongSoLuong = gioHang.reduce((tong, sp) => tong + sp.soLuong, 0);
-            document.getElementById('cart-count').innerText = tongSoLuong;
+            let hienThiSoLuong = document.getElementById('cart-count');
+
+
+            if (hienThiSoLuong) {
+                hienThiSoLuong.innerText = tongSoLuong;
+            }
         }
 
         function xoaSanPham(index) {
             let gioHang = JSON.parse(localStorage.getItem('gioHang')) || [];
             gioHang.splice(index, 1);
             localStorage.setItem('gioHang', JSON.stringify(gioHang));
-            hienThiGioHang(); // Render lại bảng
+            hienThiGioHang();
         }
         const khachHangHienTai = JSON.parse(localStorage.getItem('userHienTai'));
 
-if (!khachHangHienTai) {
-    // Thông báo và chuyển hướng về trang chủ nếu chưa đăng nhập
-    alert("Bạn cần đăng nhập để xem giỏ hàng và tiến hành thanh toán!");
-    window.location.href = "index.html"; 
-} else {
-    // Chỉ render giỏ hàng nếu đã đăng nhập thành công
-    hienThiGioHang();
-}
+        if (!khachHangHienTai) {
+            alert("Bạn cần đăng nhập để xem giỏ hàng và tiến hành thanh toán!");
+            window.location.href = "index.html";
+        } else {
+            hienThiGioHang();
+        }
+        function capNhatSoLuongGioHang() {
+            let gioHang = JSON.parse(localStorage.getItem('gioHang')) || [];
+            let tongSoLuong = gioHang.reduce((tong, sp) => tong + sp.soLuong, 0);
+            let hienThiSoLuong = document.getElementById('cart-count');
+            if (hienThiSoLuong) {
+                hienThiSoLuong.innerText = tongSoLuong;
+            }
+        }
     </script>
     <script src="HFshow.js"></script>
     <div id="footer-container"></div>

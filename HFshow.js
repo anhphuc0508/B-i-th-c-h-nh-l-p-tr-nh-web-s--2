@@ -67,7 +67,7 @@ function xuLyDangNhap() {
         localStorage.setItem('userHienTai', JSON.stringify(userHopLe));
         alert(`Chào mừng ${userHopLe.name} quay trở lại!`);
         
-        // Đóng modal đăng nhập và cập nhật giao diện
+      
         document.getElementById('btn-close-login').click();
         kiemTraTrangThaiDangNhap();
     } else {
@@ -84,12 +84,8 @@ function kiemTraTrangThaiDangNhap() {
     if (user) {
        
         displayMenu.innerText = `${user.name} (Đăng xuất)`;
-        
-      
         btnMenu.removeAttribute('data-bs-toggle');
         btnMenu.removeAttribute('data-bs-target');
-        
-        // Gán chức năng hỏi Đăng xuất vào nút
         btnMenu.onclick = function(e) {
             e.preventDefault(); 
             if(confirm("Bạn có chắc chắn muốn đăng xuất không?")) {
@@ -99,22 +95,15 @@ function kiemTraTrangThaiDangNhap() {
     } else {
         
         displayMenu.innerText = "Đăng Nhập";
-        
-        // Gắn lại modal đăng nhập vào nút
         btnMenu.setAttribute('data-bs-toggle', 'modal');
         btnMenu.setAttribute('data-bs-target', '#authModal');
         btnMenu.onclick = null; 
     }
 }
-// ================== HÀM ĐĂNG XUẤT ==================
 function dangXuat() {
-    localStorage.removeItem('userHienTai');     // Xóa thông tin user
+    localStorage.removeItem('userHienTai');    
     alert("Đã đăng xuất thành công!");
-
-    // Cập nhật lại giao diện header ngay lập tức
     kiemTraTrangThaiDangNhap();
-
-    // Nếu bạn muốn xóa luôn giỏ hàng khi đăng xuất (tùy chọn)
     // localStorage.removeItem('gioHang');
     // capNhatSoLuongGioHang();
 }
