@@ -6,6 +6,9 @@ function loadLayout() {
             if (typeof capNhatSoLuongGioHang === "function") {
                 capNhatSoLuongGioHang();
             }
+            if (typeof kiemTraTrangThaiDangNhap === "function") {
+                kiemTraTrangThaiDangNhap();
+            }
         })
         .catch(error => console.error('Lỗi load Header:', error));
     fetch('footer.html')
@@ -103,5 +106,16 @@ function kiemTraTrangThaiDangNhap() {
         btnMenu.onclick = null; 
     }
 }
+// ================== HÀM ĐĂNG XUẤT ==================
+function dangXuat() {
+    localStorage.removeItem('userHienTai');     // Xóa thông tin user
+    alert("Đã đăng xuất thành công!");
 
+    // Cập nhật lại giao diện header ngay lập tức
+    kiemTraTrangThaiDangNhap();
+
+    // Nếu bạn muốn xóa luôn giỏ hàng khi đăng xuất (tùy chọn)
+    // localStorage.removeItem('gioHang');
+    // capNhatSoLuongGioHang();
+}
 loadLayout();

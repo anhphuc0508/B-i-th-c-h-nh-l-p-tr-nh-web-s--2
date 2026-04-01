@@ -187,8 +187,6 @@ function themSanPham(idSanPham, soLuongThem = 1) {
       
         const modalDangNhap = new bootstrap.Modal(document.getElementById('authModal'));
         modalDangNhap.show();
-        
-      
         return; 
     }
     if (product) {

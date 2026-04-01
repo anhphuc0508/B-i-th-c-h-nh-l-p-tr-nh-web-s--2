@@ -78,3 +78,60 @@
         </div>
     </nav>
 </header>
+<div class="modal fade" id="signModal">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title fw-bold">Đăng Ký</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" id="btn-close-register"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="regName" class="form-label">Họ và tên:</label>
+                        <input type="text" class="form-control" id="regName" placeholder="Nhập tên của bạn">
+                    </div>
+                    <div class="mb-3">
+                        <label for="regEmail" class="form-label">Email:</label>
+                        <input type="email" class="form-control" id="regEmail" placeholder="Nhập email">
+                    </div>
+                    <div class="mb-3">
+                        <label for="regPass" class="form-label">Mật khẩu:</label>
+                        <input type="password" class="form-control" id="regPass" placeholder="Tạo mật khẩu mạnh">
+                    </div>
+                    <div class="mb-3">
+                        <label for="regConfirmPass" class="form-label">Xác nhận mật khẩu:</label>
+                        <input type="password" class="form-control" id="regConfirmPass" placeholder="Nhập lại mật khẩu">
+                    </div>
+                    <div class="d-grid">
+                        <button type="button" class="btn btn-primary btn-lg" onclick="xuLyDangKy()">Đăng Ký</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+     <div class="modal fade" id="authModal">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title fw-bold">Đăng Nhập</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" id="btn-close-login"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3 mt-3">
+                        <label for="loginEmail" class="form-label">Email:</label>
+                        <input type="email" class="form-control" id="loginEmail" placeholder="Điền email của bạn">
+                    </div>
+                    <div class="mb-3 mt-3">
+                        <label for="loginPass" class="form-label">Mật Khẩu:</label>
+                        <input type="password" class="form-control" id="loginPass" placeholder="Điền mật khẩu">
+                    </div>
+                    <div class="d-grid">
+                        <button type="button" class="btn btn-primary btn-lg" onclick="xuLyDangNhap()">Đăng Nhập</button>
+                    </div>
+                </div>
+                <div class="modal-footer justify-content-center">
+                    <h6>Bạn chưa có tài khoản? <span class="text-primary" style="cursor: pointer;" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#signModal">Đăng ký ngay</span></h6>
+                </div>
+            </div>
+        </div>
+    </div>
