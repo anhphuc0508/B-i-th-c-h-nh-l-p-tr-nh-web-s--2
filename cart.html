@@ -199,7 +199,16 @@
             localStorage.setItem('gioHang', JSON.stringify(gioHang));
             hienThiGioHang(); // Render lại bảng
         }
-        hienThiGioHang();
+        const khachHangHienTai = JSON.parse(localStorage.getItem('userHienTai'));
+
+if (!khachHangHienTai) {
+    // Thông báo và chuyển hướng về trang chủ nếu chưa đăng nhập
+    alert("Bạn cần đăng nhập để xem giỏ hàng và tiến hành thanh toán!");
+    window.location.href = "index.html"; 
+} else {
+    // Chỉ render giỏ hàng nếu đã đăng nhập thành công
+    hienThiGioHang();
+}
     </script>
     <script src="HFshow.js"></script>
     <div id="footer-container"></div>

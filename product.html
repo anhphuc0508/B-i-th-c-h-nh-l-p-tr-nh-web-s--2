@@ -108,13 +108,13 @@
                 <p id="detail-desc" class="text-secondary mb-4" style="line-height: 1.6;"></p>
 
                 <div class="d-flex align-items-center mb-4 gap-3">
-                    <span class="fw-bold">Chọn số lượng:</span>
+                    <span id ="soluong" class="fw-bold">Chọn số lượng:</span>
                     <input type="number" class="form-control text-center shadow-sm" id="input-soluong" value="1" min="1"
                         style="width: 80px; border-radius: 8px;">
                 </div>
 
                 <div class="d-grid gap-2 d-md-block">
-                    <button class="btn btn-primary btn-lg btn-add-to-cart shadow">
+                    <button id="btn-them-chinh" class="btn btn-primary btn-lg btn-add-to-cart shadow">
                         <i class="bi bi-cart-plus-fill me-2"></i>Thêm vào giỏ hàng
                     </button>
                 </div>
@@ -168,6 +168,11 @@
 
             let codeHtmlBang = "";
             const khungBang = document.getElementById('detail-specs');
+            document.getElementById('btn-them-chinh').onclick = function() {
+                const soLuongChon = document.getElementById('input-soluong').value;
+                
+                themSanPham(sanpham.id, soLuongChon);
+            };
             if (sanpham.specs) {
                 for (const [key, value] of Object.entries(sanpham.specs)) {
                     codeHtmlBang += `
