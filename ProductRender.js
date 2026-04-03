@@ -64,7 +64,7 @@ function hienThiSanPhamTheoPC(loaiPC, idKhuVuc) {
     }
     sanPhamLoc.forEach((item) => {
         htmlContent += `
-        <div class="col-12 col-md-6 col-lg-3">
+        <div class="col-12 col-lg-3">
             <div class="card h-100 product-card shadow-sm border-0">
                 <a href="product.html?id=${item.id}">
                     <img src="${item.img}" class="card-img-top p-3" alt="${item.name}" style="height: 200px; object-fit: contain;">
@@ -114,7 +114,7 @@ function hienThiSanPhamTheoHang(tenHang, idKhuVuc, idPhanTrang, trang = 1) {
     let htmlContent = "";
     sanPhamTrenTrang.forEach((item) => {
         htmlContent += `
-        <div class="col-12 col-md-6 col-lg-3">
+        <div class="col-3">
             <div class="card h-100 product-card shadow-sm border-0">
                 <a href="product.html?id=${item.id}">
                     <img src="${item.img}" class="card-img-top p-3" alt="${item.name}" style="height: 200px; object-fit: contain;">

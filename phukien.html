@@ -108,9 +108,9 @@
                 </li>
             `;
 
-            // Tạo các nút số
+          
             for (let i = 1; i <= tongSoTrang; i++) {
-                // Nếu là trang hiện tại thì tô màu xanh (class 'active')
+            
                 htmlPhanTrang += `
                     <li class="page-item ${i === trangHienTai ? 'active' : ''}">
                         <a class="page-link" href="#" onclick="hienThiLaptopCoPhanTrang(${i}); return false;">${i}</a>
@@ -118,7 +118,6 @@
                 `;
             }
 
-            // Tạo nút "Trang sau"
             htmlPhanTrang += `
                 <li class="page-item ${trangHienTai === tongSoTrang ? 'disabled' : ''}">
                     <a class="page-link" href="#" onclick="hienThiLaptopCoPhanTrang(${trangHienTai + 1}); return false;">Trang sau</a>

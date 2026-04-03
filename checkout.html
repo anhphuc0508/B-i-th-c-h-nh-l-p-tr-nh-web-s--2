@@ -23,7 +23,6 @@
 
         #detail-price {
             color: #d70018;
-            /* Màu đỏ đặc trưng của các shop công nghệ */
             font-size: 2.5rem;
             font-weight: 800;
             margin-right: 15px;
@@ -97,21 +96,21 @@
         <h2 class="mb-4 fw-bold text-primary border-bottom pb-2">Thông tin thanh toán</h2>
 
         <div class="row g-5">
-            <div class="col-md-7 col-lg-8">
+            <div class="col-8">
                 <h4 class="mb-3">Địa chỉ giao hàng</h4>
                 <form id="form-thanh-toan" class="needs-validation" novalidate>
                     <div class="row g-3">
-                        <div class="col-sm-12">
+                        <div class="col-12">
                             <label for="hoTen" class="form-label">Họ và tên <span class="text-danger">*</span></label>
                             <input type="text" class="form-control" id="hoTen" placeholder="Nhập họ và tên người nhận" required>
                         </div>
 
-                        <div class="col-sm-6">
+                        <div class="col-6">
                             <label for="soDienThoai" class="form-label">Số điện thoại <span class="text-danger">*</span></label>
                             <input type="tel" class="form-control" id="soDienThoai" placeholder="Nhập số điện thoại" required>
                         </div>
 
-                        <div class="col-sm-6">
+                        <div class="col-6">
                             <label for="email" class="form-label">Email (Tùy chọn)</label>
                             <input type="email" class="form-control" id="email" placeholder="you@example.com">
                         </div>
@@ -154,7 +153,7 @@
                 </form>
             </div>
 
-            <div class="col-md-5 col-lg-4">
+            <div class=" col-4">
                 <div class="card shadow-sm border-0 bg-light rounded-4">
                     <div class="card-body p-4">
                         <h4 class="d-flex justify-content-between align-items-center mb-4">
@@ -184,7 +183,7 @@
     </main>
 
     <script>
-        // 1. Các hàm hỗ trợ tính tiền (dùng chung logic với cart.html)
+      
         function convertPriceToNumber(priceStr) {
             return Number(priceStr.replace(/[^0-9]/g, ''));
         }
@@ -193,12 +192,12 @@
             return number.toLocaleString('vi-VN') + ' đ';
         }
 
-        // 2. Hàm lấy dữ liệu giỏ hàng và in ra phần "Tóm tắt đơn hàng"
+        
         function loadThongTinDonHang() {
             let gioHang = JSON.parse(localStorage.getItem('gioHang')) || [];
             const danhSachCheckout = document.getElementById('danh-sach-checkout');
             
-            // Nếu giỏ hàng trống thì đá về trang chủ
+          
             if (gioHang.length === 0) {
                 alert("Giỏ hàng của bạn đang trống. Vui lòng chọn sản phẩm trước khi thanh toán!");
                 window.location.href = "index.html";
@@ -234,53 +233,47 @@
             document.getElementById('checkout-tong-tien').innerText = formatNumberToPrice(tongTien);
             document.getElementById('checkout-cart-count').innerText = tongSoLuong;
             
-            // Cập nhật luôn icon giỏ hàng trên thanh menu
+         
             document.getElementById('cart-count').innerText = tongSoLuong;
         }
 
-        // 3. Xử lý sự kiện khi bấm nút XÁC NHẬN ĐẶT HÀNG
         document.getElementById('form-thanh-toan').addEventListener('submit', function(event) {
-            event.preventDefault(); // Chặn việc form tự động load lại trang
+            event.preventDefault(); 
 
-            // Lấy thông tin khách điền
             const hoTen = document.getElementById('hoTen').value.trim();
             const soDienThoai = document.getElementById('soDienThoai').value.trim();
             const diaChi = document.getElementById('diaChi').value.trim();
 
-            // Validate cơ bản: Kiểm tra xem đã nhập đủ ô bắt buộc chưa
             if (!hoTen || !soDienThoai || !diaChi) {
                 alert("Vui lòng điền đầy đủ Họ tên, Số điện thoại và Địa chỉ giao hàng!");
                 return;
             }
 
-            // Nếu nhập đủ thì báo thành công
             alert(`Cảm ơn ${hoTen}!\nĐơn hàng của bạn đã được đặt thành công.\nChúng tôi sẽ liên hệ vào số ${soDienThoai} để xác nhận trong thời gian sớm nhất.`);
             
-            // Xóa sạch giỏ hàng trong trình duyệt
             localStorage.removeItem('gioHang');
             
-            // Đẩy khách về trang chủ
             window.location.href = "index.html";
         });
-        // 4. Xử lý sự kiện Ẩn/Hiện mã QR khi chọn phương thức thanh toán
+
         const radioCOD = document.getElementById('cod');
         const radioBanking = document.getElementById('banking');
         const khuVucQR = document.getElementById('khu-vuc-qr');
 
-        // Bắt sự kiện khi click vào COD -> Thêm class d-none để ẩn QR
+      
         radioCOD.addEventListener('change', function() {
             if (this.checked) {
                 khuVucQR.classList.add('d-none');
             }
         });
 
-        // Bắt sự kiện khi click vào Banking -> Xóa class d-none để hiện QR
+       
         radioBanking.addEventListener('change', function() {
             if (this.checked) {
                 khuVucQR.classList.remove('d-none');
             }
         });
-        // Chạy hàm load dữ liệu ngay khi mở trang
+  
         loadThongTinDonHang();
     </script>
     <script src="HFshow.js"></script>
