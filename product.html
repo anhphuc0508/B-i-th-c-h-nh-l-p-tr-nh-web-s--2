@@ -110,7 +110,7 @@
                         <p id="detail-desc" class="text-secondary mb-4" style="line-height: 1.6;"></p>
 
                         <div class="d-flex align-items-center mb-4 gap-3">
-                            <span id="soluong" class="fw-bold">Chọn số lượng:</span>
+                            <span  class="fw-bold">Chọn số lượng:</span>
                             <input type="number" class="form-control text-center shadow-sm" id="input-soluong" value="1"
                                 min="1" style="width: 80px; border-radius: 8px;">
                         </div>
@@ -231,7 +231,6 @@
             const khungBang = document.getElementById('detail-specs');
             document.getElementById('btn-them-chinh').onclick = function () {
                 const soLuongChon = document.getElementById('input-soluong').value;
-
                 themSanPham(sanpham.id, soLuongChon);
             };
             if (sanpham.specs) {
