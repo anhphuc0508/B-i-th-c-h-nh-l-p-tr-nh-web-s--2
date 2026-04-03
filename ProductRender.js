@@ -50,7 +50,6 @@ function hienThiTheoLoai(loaiSanPham, idKhuVuc) {
 
 
 hienThiTheoLoai('laptop', 'render-laptop');
-
 hienThiTheoLoai('phukien', 'render-phukien');
 hienThiTheoLoai('pc', 'render-pc');
 function hienThiSanPhamTheoPC(loaiPC, idKhuVuc) {
